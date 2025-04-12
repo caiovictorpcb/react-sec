@@ -2,7 +2,7 @@ import re
 import google.generativeai as genai
 from dotenv import load_dotenv
 import os
-import uvicorn
+
 from patterns import patterns
 
 load_dotenv()
@@ -109,9 +109,3 @@ def analyze_file(js_code):
     }
 
 
-def start():
-    uvicorn.run("main:app", port=8000, host="0.0.0.0", log_level="info", reload=True)
-
-
-if __name__ == "__main__":
-    start()

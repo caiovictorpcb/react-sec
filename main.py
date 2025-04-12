@@ -3,6 +3,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
+import uvicorn
 from analyzer import analyze_file
 
 app = FastAPI()
@@ -23,3 +24,10 @@ async def analyze_code(request: Request, code: str = Form(...)):
     return templates.TemplateResponse(
         "index.html", {"request": request, "result": result, "code": code}
     )
+
+def start():
+    uvicorn.run("main:app", port=8000, host="0.0.0.0", log_level="info", reload=True)
+
+
+if __name__ == "__main__":
+    start()
