@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Analyzer</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>JavaScript Analyzer</h1>
+
+  <form method="post">
+    <label for="code">Cole aqui o código JS:</label><br>
+    <textarea name="code" rows="20" cols="80" placeholder="// Cole seu código aqui..." required>{{ code if code }}</textarea><br>
+    <button type="submit">Analisar</button>
+  </form>
+
+  {% if result %}
+    <h2>🧠 Análise Geral do Código (LLM)</h2>
+    <pre>{{ result.code_llm_response }}</pre>
+
+    <h2>🔎 Strings Encontradas por Regex</h2>
+
+    <h2>🧠 Análise das Strings Suspeitas (LLM)</h2>
+    <pre>{{ result.regex_llm_response }}</pre>
+  {% endif %}
+</body>
+</html>
